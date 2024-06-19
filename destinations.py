@@ -9,8 +9,8 @@ from pathlib import Path
 file_path = 'data.json'
 
 destinations = [
-    {"name": "aaa", "score": 77, "description": "aaa"},
-    {"name": "bbb", "score": 88, "description": "bbb"},
+    {"name": "aaa", "score": 77, "description": "Aaaa"},
+    {"name": "bbb", "score": 88, "description": "Abbb"},
     {"name": "ccc", "score": 99, "description": "ccc"}
 ]
 
@@ -69,11 +69,20 @@ def search_by_score():
         print("No destinations available.")
 
 def search_by_name():
-    print("list of destinations with name by choice: ")
     if destinations:
         name_to_search = input("enter destination name to search: ")
         for dest in destinations:
             if dest['name'] == name_to_search:
+                 print(f"Name: {dest['name']}, Score: {dest['score']}, Description: {dest['description']}")
+    else:
+        print("No destinations available.")
+
+def search_contains():
+    print("list of destinations containing a word: ")
+    if destinations:
+        name_to_search = input("enter search word: ").lower()
+        for dest in destinations:
+            if name_to_search in dest['name'].lower():
                  print(f"Name: {dest['name']}, Score: {dest['score']}, Description: {dest['description']}")
     else:
         print("No destinations available.")
@@ -115,10 +124,11 @@ def destinations_menu():
         print ("2. Edit destination")
         print ("3. Delete destination")
         print ("4. Search destination by score")
-        print ("5. search score above 80")
-        print ("6. search by name")
-        print ("7. List of all destinations")
-        print ("8. Exit menue")
+        print ("5. Search score above 80")
+        print ("6. Search by name")
+        print ("7. Search destinations containing word")
+        print ("8. List of all destinations")
+        print ("x. Exit menu")
         select = input("please enter your choice:  ")
         if select == "1":           
             print("add destination is selected")
@@ -142,9 +152,12 @@ def destinations_menu():
             print("search destination by name")
             search_by_name()
         elif select == "7":
-            print("list of all destinations is selected")
-            dest_list()
+            print("search destination containing word")
+            search_contains()
         elif select == "8":
+            print("list of all destinations")
+            dest_list()
+        elif select == "x":
             print("exit is selected")
             exit()
 
