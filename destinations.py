@@ -68,6 +68,17 @@ def search_by_score():
     else:
         print("No destinations available.")
 
+def search_by_name():
+    print("list of destinations with name by choice: ")
+    if destinations:
+        name_to_search = input("enter destination name to search: ")
+        for dest in destinations:
+            if dest['name'] == name_to_search:
+                 print(f"Name: {dest['name']}, Score: {dest['score']}, Description: {dest['description']}")
+    else:
+        print("No destinations available.")
+
+
 def serch_score_above_80():
     print("list of destinations with score by choice: ")
     if destinations:
@@ -105,8 +116,9 @@ def destinations_menu():
         print ("3. Delete destination")
         print ("4. Search destination by score")
         print ("5. search score above 80")
-        print ("6. List of all destinations")
-        print ("7. Exit menue")
+        print ("6. search by name")
+        print ("7. List of all destinations")
+        print ("8. Exit menue")
         select = input("please enter your choice:  ")
         if select == "1":           
             print("add destination is selected")
@@ -127,9 +139,12 @@ def destinations_menu():
             print("search score above 80")
             serch_score_above_80()
         elif select == "6":
+            print("search destination by name")
+            search_by_name()
+        elif select == "7":
             print("list of all destinations is selected")
             dest_list()
-        elif select == "7":
+        elif select == "8":
             print("exit is selected")
             exit()
 
